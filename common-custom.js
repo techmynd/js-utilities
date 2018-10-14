@@ -171,6 +171,27 @@ document.getElementById("demo").value = "some name";
 
 $('input').val();
 
+// getelement by id
+document.getElementById("demo").innerHTML = "Hello";
+// get element by tag name // first <p> element
+document.getElementsByTagName("p")[0].innerHTML = "Hello";
+// getelement by class // first element that has the class name "test"
+document.getElementsByClassName("test")[0].innerHTML = "Hello";
+// img src // change pic
+document.getElementById("image").src = "pic_mountain.jpg";
+// input value change // change the value of the input field
+document.getElementById("myText").value = "Hello";
+// element color change
+document.getElementById("demo").style.color = "red";
+// font size change
+document.getElementById("demo").style.fontSize = "40px";
+// display
+document.getElementById("demo").style.display = "none";
+// event listener
+document.getElementById("demo").addEventListener("click", myFunction);
+
+//javascript selectors
+//https://www.w3schools.com/jquery/jquery_ref_selectors.asp
 
 
 
@@ -343,6 +364,34 @@ for (x=0;x<$(".img-viewer").children('img').length;x++){
 $('li').addClass(function(index) {
   $(this).addClass("item-" + index);
 });
+
+
+
+// Create a loop that runs as long as i is less than 10, but increase i with 2 each time.
+var i = 0;
+while (i < 10) {
+  console.log(i);
+  i = i + 2;
+}
+
+
+// loop exit
+for (i = 0; i < 10; i++) {
+  console.log(i);
+  if (i == 5) {
+    break;
+  }
+}
+
+
+// loop jump
+for (i = 0; i < 10; i++) {
+  if (i == 5) {
+continue;
+  }
+  console.log(i);
+}
+
 
 
 
@@ -824,6 +873,29 @@ $('input[type=text]').focus(function(){
 $( "a" ).css( "color", "red" );
 
 
+
+// escapse character
+var txt = "We are \"Vikings\"";
+
+// position of
+var txt = "abcdefghijklm";
+var pos = txt.indexOf("h");
+// 7
+
+
+// get current year and month
+var d = new Date();
+year = d.getFullYear();
+month = d.getMonth();
+//set year
+d.setFullYear(2020);
+
+// random number
+var r = Math.random();
+// max number
+var x = Math.max(10, 20);
+// round number
+var x = Math.round(5.3);
 
 
 

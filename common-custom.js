@@ -951,6 +951,20 @@ var windowWidth = $(window).width();
 
 
 // no jquery js codes // http://youmightnotneedjquery.com
+// 
+// 
+
+// JUST JS
+
+window.onload = function() {
+	document.getElementById('button').addEventListener('click',showResults);
+}
+function showResults(){
+
+}
+
+// 
+// 
 // work in progress
 
 

@@ -1,26 +1,55 @@
 "use strict";
+
+/*!
+ * ----------------------------------------------------------
+ * Document Ready / Window Resize / Window Load Plain JS
+ * ----------------------------------------------------------
+ */
+
+document.addEventListener("DOMContentLoaded", function() {
+  // DOM loaded // Document Ready
+  DOMLoaded();
+});
+window.addEventListener("resize", function() {
+  // window resized
+  windowResized();
+});
+
+window.addEventListener("load", function(event) {
+  // window loaded with all content
+  windowLoaded();
+});
+
+function DOMLoaded() {
+  screenCheck();
+}
+function windowResized() {
+  screenCheck();
+}
+function windowLoaded() {}
+
 /*!
  * ----------------------------------------------------------
  * Math
  * ----------------------------------------------------------
  */
 
-// add
+// Add
 let mmAdd = function(a = 0, b = 0) {
   return a + b;
 };
 
-// multiply
+// Multiply
 let mmMultiply = function(a = 0, b = 0) {
   return a * b;
 };
 
-// deduct
+// Deduct
 let mmDeduct = function(a = 0, b = 0) {
   return a - b;
 };
 
-// power
+// Power
 let mmPower = function(a = 0, b = 0) {
   return a ** b;
 };
@@ -51,7 +80,7 @@ const mmCalc = function(calcFunc, num1, num2) {
  * ----------------------------------------------------------
  */
 
-// add all numbers
+// Add all numbers
 let mmAddAll = function(...allnums) {
   let sum = 0;
   for (let i = 0; i < allnums.length; i++) {
@@ -67,7 +96,8 @@ let mmAddAll = function(...allnums) {
 
 // multiply all numbers
 let mmMultiplyAll = function(...allnums) {
-  let res = 0;
+  // not 0 bcoz 0 will result in 0 output coz 0*anything=0
+  let res = 1;
   for (let i = 0; i < allnums.length; i++) {
     // res = res * allnums[i];
     res *= allnums[i];
@@ -76,8 +106,8 @@ let mmMultiplyAll = function(...allnums) {
 };
 
 // usage
-let result = mmMultiplyAll(2, 2, 2, 2, 2);
-console.log(result);
+// let result = mmMultiplyAll(2, 2, 2, 2, 2);
+// console.log(result);
 
 /*!
  * ----------------------------------------------------------
@@ -140,3 +170,121 @@ const mmMergeObj = function(a = {}, b = {}) {
 //   { Email: "john@msn.com", Age: 40 },
 // ); // 40 will replace 20 in merging process
 // console.log(result);
+
+/*!
+ * ----------------------------------------------------------
+ * hasClass / addClass / removeClass
+ * ----------------------------------------------------------
+ */
+
+function hasClass(el, className) {
+  return el.classList
+    ? el.classList.contains(className)
+    : new RegExp("\\b" + className + "\\b").test(el.className);
+}
+
+function addClass(el, className) {
+  if (el.classList) el.classList.add(className);
+  else if (!hasClass(el, className)) el.className += " " + className;
+}
+
+function removeClass(el, className) {
+  if (el.classList) el.classList.remove(className);
+  else
+    el.className = el.className.replace(
+      new RegExp("\\b" + className + "\\b", "g"),
+      "",
+    );
+}
+
+// usage
+// let bodyTag = document.querySelector("body");
+// if (!hasClass(bodyTag, "is-mobile")) addClass(bodyTag, "is-mobile");
+
+/*!
+ * ----------------------------------------------------------
+ * Mobile or Non-Mobile Test // Screen Width Test
+ * ----------------------------------------------------------
+ */
+
+function screenCheck() {
+  let bodyTag = document.querySelector("body");
+  var deviceAgent = navigator.userAgent.toLowerCase();
+  var agentID = deviceAgent.match(/(iphone|ipod|ipad)/);
+  if (agentID || window.innerWidth <= 1024) {
+    // Mobile screen code here
+    addClass(bodyTag, "is-mobile");
+    removeClass(bodyTag, "not-mobile");
+  } else {
+    // Desktop screen code here
+    addClass(bodyTag, "not-mobile");
+    removeClass(bodyTag, "is-mobile");
+  }
+}
+
+// // usage
+// document.addEventListener("DOMContentLoaded", function() {
+//   // DOM loaded
+//   screenCheck();
+// });
+// window.addEventListener("resize", function() {
+//   // window resized
+//   screenCheck();
+// });
+
+// ???
+// time conversions
+// temperature calculations
+
+/*!
+ * ----------------------------------------------------------
+ * immediately invoked function // iife
+ * ----------------------------------------------------------
+ */
+
+/*
+(function() {
+  // some code that will be executed automatically
+})();
+*/
+
+/*!
+ * ----------------------------------------------------------
+ * Selectors
+ * ----------------------------------------------------------
+ */
+
+/*
+let elementName = document.querySelector('#id');
+let elementName = document.querySelectorAll('p');
+// INNER-HTML
+document.getElementById("demo").innerHTML = myVar;
+// VALUE
+document.getElementById("demo").value = "some name";
+document.getElementById("demo").innerHTML = "Hello";
+// get element by tag name // first <p> element
+document.getElementsByTagName("p")[0].innerHTML = "Hello";
+// getelement by class // first element that has the class name "test"
+document.getElementsByClassName("test")[0].innerHTML = "Hello";
+// img src // change pic
+document.getElementById("image").src = "pic_mountain.jpg";
+// input value change // change the value of the input field
+document.getElementById("myText").value = "Hello";
+// element color change
+document.getElementById("demo").style.color = "red";
+// font size change
+document.getElementById("demo").style.fontSize = "40px";
+// display
+document.getElementById("demo").style.display = "none";
+// event listener
+document.getElementById("demo").addEventListener("click", myFunction);
+*/
+
+/*!
+ * ----------------------------------------------------------
+ * References
+ * https://plainjs.com
+ * javascript selectors > https://www.w3schools.com/jquery/jquery_ref_selectors.asp
+ * http://youmightnotneedjquery.com
+ * ----------------------------------------------------------
+ */

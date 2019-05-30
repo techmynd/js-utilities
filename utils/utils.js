@@ -9,6 +9,7 @@
 document.addEventListener("DOMContentLoaded", function() {
   // DOM loaded // Document Ready
   DOMLoaded();
+  cleanForm();
 });
 window.addEventListener("resize", function() {
   // window resized
@@ -276,9 +277,34 @@ const sortAsc = function(a, b) {
 
 /*!
  * ----------------------------------------------------------
- *
+ * Clean form fields and trim spaces // strip html tags
  * ----------------------------------------------------------
  */
+
+function cleanForm() {
+  let formElement = document.querySelectorAll("input, textarea");
+  formElement.forEach(eachFrmElement => {
+    eachFrmElement.addEventListener("change", function(e) {
+      //formElement.trimStart().trimEnd();
+      let getVal = this.value;
+      let newVal = getVal
+        .replace(/(<([^>]+)>)/gi, "")
+        .trim()
+        .trimStart()
+        .trimEnd();
+      this.value = newVal;
+      //console.log(this.value);
+    });
+  });
+
+  // formElement.addEventListener("change", function(e) {
+  //   //formElement.trimStart().trimEnd();
+  //   let getVal = this.value;
+  //   let newVal = getVal.trimStart().trimEnd();
+  //   this.value = newVal;
+  //   console.log(this.value);
+  // });
+}
 
 // let result = ;
 // console.log(result);

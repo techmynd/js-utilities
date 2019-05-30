@@ -20,6 +20,12 @@ window.addEventListener("load", function(event) {
   windowLoaded();
 });
 
+/*
+window.onload = function(){
+  //
+};
+*/
+
 function DOMLoaded() {
   screenCheck();
 }
